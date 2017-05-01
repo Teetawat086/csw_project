@@ -10,5 +10,5 @@ $ node server.js
 
 
 ### Open Web Browser:
-Go to: http://localhost/
+Go to: http://localhost:50086/
 =======

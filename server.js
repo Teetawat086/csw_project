@@ -2,13 +2,17 @@ var express = require('express');
 var app = express(); 
 var router = express.Router(); 
 var bodyParser = require('body-parser')
-// var urlencodedParser = bodyParser.urlencoded({ extended: false }); 
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(bodyParser.json());
 var sumcost=0;
-var items = [{'id':0,'price': 550,'name': 'CPS Basic Round Neck Tee','size':['M','L','XL'],'pic':'CPS/แขนสั้น/ผช/cpsm1.jpg',sex:'M',type:'CPS',color:['white','peru','grey','red','navy','pink','black']}, 
-	       		{'id':1,'price': 490,'name': 'CPS Basic Round Neck Tee','size':['S','M','L'],'pic':'CPS/แขนสั้น/ผญ/cpsw1.jpg',sex:'F',type:'CPS',color:['white','black','grey','red']},
-	       		{'id':2,'price': 690,'name': 'CPS Basic Symbolic','size':['M','L','XL'],'pic':'CPS/แขนยาว/cpssm1.jpg',sex:'M',type:'CPS',color:['darkgreen','black','white','peru']},
-	       		{'id':3,'price': 100,'name': 'T-shirt สีพื้นแขนสั้น','size':['S','M','L','XL'],'pic':'Tshirt/แขนสั้น/t1.jpg',sex:'U',type:'Tshirt',color:['darkviolet','grey','red','lime','yellow','pink','black','white']},
-	       		{'id':4,'price': 150,'name': 'T-shirt สีพื้นแขนยาว','size':['S','M','L','XL'],'pic':'Tshirt/แขนยาว/ttm1.jpg',sex:'U',type:'Tshirt',color:['darkviolet','grey','red','lime','yellow','pink','black','white']},
+var items = [{'id':0,'price': 550,'name': 'CPS Basic Round Neck Tee','size':['M','L','XL'],'pic':'CPS/short/m/cpsm1.jpg',sex:'M',type:'CPS',color:['white','peru','grey','red','navy','pink','black']}, 
+	       		{'id':1,'price': 490,'name': 'CPS Basic Round Neck Tee','size':['S','M','L'],'pic':'CPS/short/f/cpsw1.jpg',sex:'F',type:'CPS',color:['white','black','grey','red']},
+	       		{'id':2,'price': 690,'name': 'CPS Basic Symbolic','size':['M','L','XL'],'pic':'CPS/long/cpssm1.jpg',sex:'M',type:'CPS',color:['darkgreen','black','white','peru']},
+	       		{'id':3,'price': 100,'name': 'T-shirt สีพื้นแขนสั้น','size':['S','M','L','XL'],'pic':'Tshirt/short/t1.jpg',sex:'U',type:'Tshirt',color:['darkviolet','grey','red','lime','yellow','pink','black','white']},
+	       		{'id':4,'price': 150,'name': 'T-shirt สีพื้นแขนยาว','size':['S','M','L','XL'],'pic':'Tshirt/long/ttm1.jpg',sex:'U',type:'Tshirt',color:['darkviolet','grey','red','lime','yellow','pink','black','white']},
 	       		{'id':5,'price': 560,'name': 'Basic Navy Dress','size':['M','L','XL'],'pic':'Senyes/dress/dr1.jpg',sex:'F',type:'Senyes',color:['blackandwhite']},
 	       		{'id':6,'price': 490,'name': 'เสื้อ Polo Black','size':['M','L','XL','XXL'],'pic':'Senyes/polo/polom1.jpg',sex:'U',type:'Senyes',color:['black']},
 	       		{'id':7,'price': 180,'name': 'เสื้อ Bohemian','size':['M'],'pic':'Bohemian/b1.jpg',sex:'F',type:'Bohemian',color:['grey','red','lightpink','lightskyblue']},
@@ -118,7 +122,7 @@ router.get('/', function(req, res) {
 });
 
 // all of our routes will be prefixed with /api 
-app.use('/api', bodyParser.json(), router);   //[use json]
+app.use('/api', router);
 //app.use('/api', bodyParser.urlencoded({ extended: false }), router); 
 
 app.use("*",function(req,res){
@@ -126,6 +130,6 @@ app.use("*",function(req,res){
  // res.sendFile(__dirname + "/public/404.html");
 });
 
-app.listen(80, function() {
-	console.log("Server is running")
+app.listen(50086, function() {
+  console.log("Server is running")
 });

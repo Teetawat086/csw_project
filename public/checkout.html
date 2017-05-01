@@ -128,7 +128,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</li>
 						<li><span>{{item.name}}</span></li>
 						<li><span class="item_price">฿ {{item.price}}</span></li>
-						<li> <a href="#" class="add-cart cart-check item_add">Add to cart</a></li>		
+						<li>Add to cart success</li>		
 						<img src="images/close-1.png" class="close1" alt="" ng-click="unbuyitem(item.id)">
 					<div class="clearfix" > </div>
 				</ul>
@@ -190,13 +190,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 // app.controller("BearCtrl", function($scope,$http){ 
     app.controller("itemCtrl", function($scope,$resource){   
-       var Buyingitem = $resource("http://127.0.0.1/api/buyingitems/:buyingitem_id",{buyingitem_id: '@id'},
+       var Buyingitem = $resource("/api/buyingitems/:buyingitem_id",{buyingitem_id: '@id'},
                         // PUT is not a bulid-in http method in ngResource
                         {
                           update:{ method:'PUT' }
                         }
                  )
-       var Cost = $resource("http://127.0.0.1/api/costs/:cost_id",{cost_id: '@id'},
+       var Cost = $resource("api/costs/:cost_id",{cost_id: '@id'},
                         // PUT is not a bulid-in http method in ngResource
                         {
                           update:{ method:'PUT' }

@@ -262,19 +262,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 // app.controller("BearCtrl", function($scope,$http){ 
     app.controller("itemCtrl", function($scope,$resource){   
-      var Item = $resource("http://127.0.0.1/api/items/:item_id",{item_id: '@id'},
+      var Item = $resource("/api/items/:item_id",{item_id: '@id'},
                         // PUT is not a bulid-in http method in ngResource
                         {
                           update:{ method:'PUT' }
                         }
                  )
-      var Cost = $resource("http://127.0.0.1/api/costs/:cost_id",{cost_id: '@id'},
+      var Cost = $resource("/api/costs/:cost_id",{cost_id: '@id'},
                         // PUT is not a bulid-in http method in ngResource
                         {
                           update:{ method:'PUT' }
                         }
                  )
-       var Buyingitem = $resource("http://127.0.0.1/api/buyingitems/:buyingitem_id",{buyingitem_id: '@id'},
+       var Buyingitem = $resource("/api/buyingitems/:buyingitem_id",{buyingitem_id: '@id'},
                         // PUT is not a bulid-in http method in ngResource
                         {
                           update:{ method:'PUT' }
