@@ -175,10 +175,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			      <div class="col-md-4 home-grid" >
 					<div class="home-product-main">
 					   <div class="home-product-top">
-					      <a href="" ng-click="updatecost(item.price)"><img src="images/{{item.pic}}" alt="" class="img-responsive zoom-img"></a>
+					      <a href="" ng-click="buyitem(item.id)"><img src="images/{{item.pic}}" alt="" class="img-responsive zoom-img"></a>
 					   </div>
 						<div class="home-product-bottom">
-								<h3><a href="single.html">{{item.name}}</a></h3>
+								<h3><a href="">{{item.name}}</a></h3>
 								<p>฿{{item.price}}</p>						
 						</div>
 						<div class="srch">
@@ -189,10 +189,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="col-md-4 home-grid" >
 					<div class="home-product-main">
 					   <div class="home-product-top">
-					      <a href="single.html"><img src="images/{{item.pic}}" alt="" class="img-responsive zoom-img"></a>
+					      <a href=""><img src="images/{{item.pic}}" alt="" class="img-responsive zoom-img"></a>
 					   </div>
 						<div class="home-product-bottom">
-								<h3><a href="single.html">{{item.name}}</a></h3>
+								<h3><a href="">{{item.name}}</a></h3>
 								<p>฿{{item.price}}</p>						
 						</div>
 						<div class="srch">
@@ -257,7 +257,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 
- <script type="text/javascript"> 
+<script type="text/javascript"> 
     var app = angular.module("itemApp", ['ngResource']) 
 
 // app.controller("BearCtrl", function($scope,$http){ 
@@ -274,6 +274,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                           update:{ method:'PUT' }
                         }
                  )
+       var Buyingitem = $resource("http://127.0.0.1/api/buyingitems/:buyingitem_id",{buyingitem_id: '@id'},
+                        // PUT is not a bulid-in http method in ngResource
+                        {
+                          update:{ method:'PUT' }
+                        }
+                 )
 
       // need to declare in first use in side controller
       // unless we cannot access editBear via $scope
@@ -281,9 +287,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       $scope.result = {};
       $scope.items = Item.query();
        $scope.costs = Cost.query();
+       $scope.buyingitems = Buyingitem.query();
       $scope.showing=['all'];
       $scope.showingall=true;
       $scope.type=['CPS','Tshirt','Senyes','Bohemian','TieDyeShirt'];
+
+      $scope.buyitem = function(id) {  
+      	console.log($scope.items[id].name);
+       	Buyingitem.save( {name: $scope.items[id].name, price: $scope.items[id].price,size: $scope.items[id].size,pic: $scope.items[id].pic,sex: $scope.items[id].sex,type:$scope.items[id].type,color:$scope.items[id].color})        
+        $scope.buyingitems = Buyingitem.query(); 
+        $scope.updatecost( $scope.items[id].price);
+        } 
        $scope.updatecost = function(c) {  
        		var cost= $scope.costs[0].c+c;
           Cost.update({cost_id: 0}, {c: cost});     

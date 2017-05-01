@@ -2,7 +2,6 @@ var express = require('express');
 var app = express(); 
 var router = express.Router(); 
 var bodyParser = require('body-parser')
-var session = require('express-session');
 // var urlencodedParser = bodyParser.urlencoded({ extended: false }); 
 var sumcost=0;
 var items = [{'id':0,'price': 550,'name': 'CPS Basic Round Neck Tee','size':['M','L','XL'],'pic':'CPS/แขนสั้น/ผช/cpsm1.jpg',sex:'M',type:'CPS',color:['white','peru','grey','red','navy','pink','black']}, 

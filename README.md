@@ -1,28 +1,17 @@
-# CRUD Bear (array storage)
+<<<<<<< HEAD
 
-Demo Restful API with NodeJS and Angular HTTP / Resource controller 
- 
-<img src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Bear-icon.png" alt="Bear Restful Example" width="170" />
-
-* restfulBearAPI (Manipulate FormUrlEncoded) 
-* restfulBearJSON (Manipulate JSON with bear*.html)
-
-All 2 files are the same except restfulBearAPI is for API testing with PostMan and restfulBearAngular is manipulate the JSON ( Extract: res.json(bears); ) with 2 html example files:
-
-* /public/bearHttp.html  (Angular http get/post)
-
-* /public/bearResource.html (Anugular Resource controller)
 
 # Installation
 ```bash
-$ git clone https://github.com/wwarodom/csw.git 
-$ cd csw  
-$ npm init  
-$ npm install express body-parser --save  
-$ node restfulBearJSON.js 
+$ git clone https://github.com/Teetawat086/csw_project.git 
+$ cd csw_project
+$ node server.js 
 ```
 
 
 
 ### Open Web Browser:
-Go to: http://localhost/
+Go to: http://localhost:8000/
+=======
+# csw_project
+>>>>>>> f6b91145b760a29d676b928d022a10c90b3ffda1
