@@ -1,0 +1,341 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Shoplist A Ecommerce Category Flat Bootstrap Responsive  Website Template | Product-m :: w3layouts</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.0.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<!-- Custom Theme files -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+ <script src="js/angular-resource.min.js"></script>
+</head>
+<body>
+<!--header strat here-->
+<div ng-app="itemApp" ng-controller="itemCtrl" >
+	<div class="header">
+	<div class="container">
+		<div class="header-main">
+			<div class="top-nav">
+				<div class="content white">
+	              <nav class="navbar navbar-default" role="navigation">
+					    <div class="navbar-header">
+					        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						        <span class="sr-only">Toggle navigation</span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+					        </button>
+					        <div class="navbar-brand logo">
+								<a href="index.html"><img src="images/logo1.png" alt=""></a>
+							</div>
+					    </div>
+					    <!--/.navbar-header-->
+					 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					        <ul class="nav navbar-nav">
+					        	   <li><a href="index.html">Home</a></li>
+						             <li class="dropdown">
+						        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Men<b class="caret"></b></a>
+						            <ul class="dropdown-menu multi-column columns-2">
+							            <div class="row">
+								            <div class="col-sm-4">
+									            <ul class="multi-column-dropdown">
+										            <li><a href="product-m.html">CPS T-shirt</a></li>
+										            <li><a href="product-m.html">T-shirt</a></li>
+										            <li><a href="product-m.html">TieDyeShirt</a></li>
+										            <li><a href="product-m.html">Senyes</a></li>
+									            </ul>
+								            </div>
+							            </div>
+						            </ul>
+						        </li>
+						            <li class="dropdown">
+						        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<b class="caret"></b></a>
+						            <ul class="dropdown-menu multi-column columns-2">
+							            <div class="row">
+								            <div class="col-sm-4">
+									            <ul class="multi-column-dropdown">
+										            <li><a href="product-f.html">CPS T-shirt</a></li>
+										            <li><a href="product-f.html">T-shirt</a></li>
+										            <li><a href="product-f.html">TieDyeShirt</a></li>
+										            <li><a href="product-f.html">Senyes</a></li>
+										            <li><a href="product-f.html">Bohemian</a></li>
+									            </ul>
+								            </div>
+							            </div>
+						            </ul>
+						        </li>
+						        <li><a href="contact.html">Contact</a></li>
+					        </ul>
+					    </div>
+					    <!--/.navbar-collapse-->
+					</nav>
+					<!--/.navbar-->
+				</div>
+			</div>
+			<div class="header-right">
+				<div class="search">
+					<div class="search-text">
+					    <input class="serch" type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"/>
+					</div>
+					<div class="cart box_1">
+						<a href="checkout.html">
+						<h3>
+							<img src="images/cart.png" alt=""/>
+							<div class="total">
+							฿{{costs[0].c}}</div>
+							</h3>
+						</a>
+						<p><a href="" class="simpleCart_empty" ng-click="emptycost(0)">Empty Cart</a></p>
+					</div>               
+                     <div class="clearfix"> </div>					
+				</div>
+			</div>
+		 <div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!--header end here-->
+<!--product start here-->
+<div class="product">
+	<div class="container">
+		<div class="product-main">
+			  <div class=" product-menu-bar">
+			    	<div class="col-md-3 prdt-right">
+					<div class="w_sidebar">
+						<section  class="sky-form">
+							<h1>Categories</h1>
+							<div class="row1 scroll-pane">
+								<div class="col col-4">
+									<label class="checkbox"><input type="checkbox" name="checkbox" ng-click="selectAll()" ng-model="showingall"  ><i></i>All</label>
+								</div>
+								<div class="col col-4">								
+									<label class="checkbox"><input type="checkbox" name="checkbox"  ng-model="showingtype[0]" ng-click="selectitem()"><i></i>CPS</label>
+									<label class="checkbox"><input type="checkbox" name="checkbox"ng-model="showingtype[1]" ng-click="selectitem()"><i></i>TShirt</label>
+									<label class="checkbox"><input type="checkbox" name="checkbox"ng-model="showingtype[2]" ng-click="selectitem()"><i></i>Senyes</label>
+									<label class="checkbox"><input type="checkbox" name="checkbox"ng-model="showingtype[3]" ng-click="selectitem()"><i></i>Bohemian</label>
+									<label class="checkbox"><input type="checkbox" name="checkbox"ng-model="showingtype[4]" ng-click="selectitem()"><i></i>Tie Dye Shirt </label>	
+								</div>
+							</div></div>
+						</section>
+						<section class="sky-form">
+							<h4>discount</h4>
+								<div class="row1 row2 scroll-pane">
+									<div class="col col-4">
+										<label class="radio"><input type="radio" name="radio" checked=""><i></i>60 % and above</label>
+										<label class="radio"><input type="radio" name="radio"><i></i>50 % and above</label>
+										<label class="radio"><input type="radio" name="radio"><i></i>40 % and above</label>
+									</div>
+									<div class="col col-4">
+										<label class="radio"><input type="radio" name="radio"><i></i>30 % and above</label>
+										<label class="radio"><input type="radio" name="radio"><i></i>20 % and above</label>
+										<label class="radio"><input type="radio" name="radio"><i></i>10 % and above</label>
+									</div>
+								</div>						
+						</section>
+						<section class="sky-form">
+							<h4>Colour</h4>
+								<ul class="w_nav2">
+									<li><a class="color1" href="#"></a></li>
+									<li><a class="color2" href="#"></a></li>
+									<li><a class="color3" href="#"></a></li>
+									<li><a class="color4" href="#"></a></li>
+									<li><a class="color5" href="#"></a></li>
+									<li><a class="color6" href="#"></a></li>
+									<li><a class="color7" href="#"></a></li>
+									<li><a class="color8" href="#"></a></li>
+									<li><a class="color9" href="#"></a></li>
+									<li><a class="color10" href="#"></a></li>
+									<li><a class="color12" href="#"></a></li>
+									<li><a class="color13" href="#"></a></li>
+									<li><a class="color14" href="#"></a></li>
+									<li><a class="color15" href="#"></a></li>
+									<li><a class="color5" href="#"></a></li>
+									<li><a class="color6" href="#"></a></li>
+									<li><a class="color7" href="#"></a></li>
+									<li><a class="color8" href="#"></a></li>
+									<li><a class="color9" href="#"></a></li>
+									<li><a class="color10" href="#"></a></li>
+								</ul>
+						</section>
+					</div>
+				</div>
+			  </div>	
+			      <div ng-repeat="item in items track by $index"  ng-if="!isEmpty(item)">
+
+			      <div ng-if="item.sex=='F'||item.sex=='U'">
+			      <div ng-if="showing[0]=='all'">
+			      <div class="col-md-4 home-grid" >
+					<div class="home-product-main">
+					   <div class="home-product-top">
+					      <a href="" ng-click="updatecost(item.price)"><img src="images/{{item.pic}}" alt="" class="img-responsive zoom-img"></a>
+					   </div>
+						<div class="home-product-bottom">
+								<h3><a href="single.html">{{item.name}}</a></h3>
+								<p>฿{{item.price}}</p>						
+						</div>
+						<div class="srch">
+							<span>฿{{item.price}}</span>
+						</div>
+					</div></div></div>
+					 <div ng-if="showing[0]==item.type||showing[1]==item.type||showing[2]==item.type||showing[3]==item.type||showing[4]==item.type">
+					<div class="col-md-4 home-grid" >
+					<div class="home-product-main">
+					   <div class="home-product-top">
+					      <a href="single.html"><img src="images/{{item.pic}}" alt="" class="img-responsive zoom-img"></a>
+					   </div>
+						<div class="home-product-bottom">
+								<h3><a href="single.html">{{item.name}}</a></h3>
+								<p>฿{{item.price}}</p>						
+						</div>
+						<div class="srch">
+							<span>฿{{item.price}}</span>
+						</div>
+					</div></div>
+					</div>
+
+					</div>
+				 </div>
+				 
+			      <div class="clearfix"> </div>
+			  </div>
+		</div>
+	</div>
+</div>
+<!--product end here-->
+<!--footer strat here-->
+<div class="footer">
+	<div class="container">
+		<div class="footer-main">
+			<div class="ftr-grids-block">
+				<div class="col-md-3 footer-grid">
+					<ul>
+						<li><a href="product-m.html">CPS T-shirt</a></li>
+						<li><a href="product-m.html">T-shirt</a></li>
+						<li><a href="product-m.html">TieDyeShirt</a></li>
+						<li><a href="product-m.html">Senyes</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 footer-grid">
+					
+				</div>
+				<div class="col-md-3 footer-grid">
+					<ul>
+						<li><a href="contact.html">Contact Us</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 footer-grid-icon">
+					<ul>
+						<li><a href="#"><span class="u-tub"> </span></a></li>
+						<li><a href="#"><span class="instro"> </span></a></li>
+						<li><a href="#"><span class="twitter"> </span></a></li>
+						<li><a href="#"><span class="fb"> </span></a></li>
+						<li><a href="#"><span class="print"> </span></a></li>
+					</ul>
+					<form>
+					<input class="email-ftr" type="text" value="Newsletter" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Newsletter';}">
+					<input type="submit" value="Submit"> 
+					</form>
+				</div>
+		    <div class="clearfix"> </div>
+		  </div>
+		  <div class="copy-rights">
+		     <p>© 2016 Shoplist. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		   </div>
+		</div>
+	</div>
+</div></div>
+<!--footer end here-->
+
+
+
+ <script type="text/javascript"> 
+    var app = angular.module("itemApp", ['ngResource']) 
+
+// app.controller("BearCtrl", function($scope,$http){ 
+    app.controller("itemCtrl", function($scope,$resource){   
+      var Item = $resource("http://127.0.0.1/api/items/:item_id",{item_id: '@id'},
+                        // PUT is not a bulid-in http method in ngResource
+                        {
+                          update:{ method:'PUT' }
+                        }
+                 )
+      var Cost = $resource("http://127.0.0.1/api/costs/:cost_id",{cost_id: '@id'},
+                        // PUT is not a bulid-in http method in ngResource
+                        {
+                          update:{ method:'PUT' }
+                        }
+                 )
+
+      // need to declare in first use in side controller
+      // unless we cannot access editBear via $scope
+      $scope.edititem = {};
+      $scope.result = {};
+      $scope.items = Item.query();
+       $scope.costs = Cost.query();
+      $scope.showing=['all'];
+      $scope.showingall=true;
+      $scope.type=['CPS','Tshirt','Senyes','Bohemian','TieDyeShirt'];
+       $scope.updatecost = function(c) {  
+       		var cost= $scope.costs[0].c+c;
+          Cost.update({cost_id: 0}, {c: cost});     
+          $scope.costs = Cost.query();  
+        } 
+         $scope.emptycost = function(c) {  
+          Cost.update({cost_id: 0}, {c: c});     
+          $scope.costs = Cost.query();  
+        } 
+
+       $scope.get = function(id) { 
+        // bear in function argument = result of Bear.get().
+        // bear = Bear.get({bear_id})
+        Item.get({ item_id: id } , function (item) {
+
+          $scope.result = item
+          console.log( item )
+          console.log('result name = ' + item.name )          
+        })  
+      }
+      $scope.selectAll=function(){
+      console.log('all');
+      		if($scope.showingall==false)
+      			$scope.showingall=true;
+      		 $scope.showing=['all']; 
+      		for(var i=0;i<5;i++)
+      		{
+      			$scope.showingtype[i]= false;
+      		}
+      }
+      $scope.selectitem=function(){
+      	 console.log('one');
+      		if($scope.showingall=true)
+      			$scope.showingall=false;
+      	    $scope.showing=[]; 
+      		for(var i=0;i<5;i++)
+      		{
+      			if($scope.showingtype[i]==true)
+   					$scope.showing.push($scope.type[i]);
+
+      		}
+      }
+        $scope.isEmpty = function(obj) {
+          return Object.keys(obj).length == 0;
+      }
+
+      $scope.select = function(id,obj) {
+         return   id == obj.id
+      }
+
+    })
+ 
+  </script>
+</body>
+</html>

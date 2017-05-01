@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ClothStore</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular-resource.min.js"></script>
+
+  </head>
+
+<body > 
+  <div ng-app="itemApp" ng-controller="itemCtrl" class="container">
+    <h2>Clothing Store:</h2>
+    <b> Result: </b> <font color="red">{{result}} </font>
+    <ul>
+        <li ng-repeat="item in items track by $index"  ng-if="!isEmpty(item)">         
+            <font color="blue" ng-if="select($index, result)">            
+              {{ item }}              
+            </font>
+            <font color="black" ng-if="!select($index, result)">            
+              {{ item }}              
+            </font>                          
+            <button type="submit" ng-click="get(item.id)" class="btn btn-success"> Get </button>            
+            <button type="submit" ng-click="edit(item.id)" class="btn btn-warning"> Edit </button>   
+            <button type="submit" ng-click="delete(item.id)" class="btn btn-danger"> Delete </button>
+        </li>
+    </ul>
+
+    <h2>New Item</h2>    
+    <label for="name">Name: </label>    
+    <input type="text" id="name"   ng-model="additem.name" ng-init="additem.name=''"> <br>
+    <label for="price">Price:</label>
+    <input type="number" id="price" ng-model="additem.price"> <br>
+    <label for="price">Pic:</label>
+    <input type="text" id="price" ng-model="additem.pic"> <br>
+   <div class="row">
+    <div class="col-lg-2">
+     <label for="sex">Sex:</label>
+    <select class="form-control" id="sel1"  ng-model="additem.sex">
+    <option value='M'>Men</option>
+    <option value='F'>Women</option>
+    </select>
+    </div></div>
+    <label for="Size">Size:</label>
+    <input type="checkbox" id="size" ng-model="additem.sizes"> S
+    <input type="checkbox" id="size" ng-model="additem.sizem"> M
+    <input type="checkbox" id="size" ng-model="additem.sizel"> L <br>
+    <button ng-click="add()">Add</button> <br> <br> 
+
+    <h2>Edit Item</h2>    
+    <input type="hidden" id="id" ng-model="edititem.id">  
+    <label for="name">Name: </label>    
+    <input type="text" id="name" ng-model="edititem.name" ng-init="edititem.name=''"> <br>
+   <label for="price">Price:</label>
+    <input type="number" id="price" ng-model="edititem.price"> <br>
+    <label for="price">Pic:</label>
+    <input type="text" id="price" ng-model="edititem.pic"> <br>
+    <label for="Size">Size:</label>
+     <input type="checkbox" id="size" ng-model="edititem.sizes"> S
+    <input type="checkbox" id="size" ng-model="edititem.sizem"> M
+    <input type="checkbox" id="size" ng-model="edititem.sizel"> L <br>
+    <button ng-click="update(edititem.id)" >Update</button>    
+
+    <br> <br> <a href="/">Home</a>
+  </div>
+
+  <script type="text/javascript"> 
+    var app = angular.module("itemApp", ['ngResource']) 
+
+// app.controller("BearCtrl", function($scope,$http){ 
+    app.controller("itemCtrl", function($scope,$resource){   
+      var Item = $resource('/api/items/:item_id',{item_id: '@id'},
+                        // PUT is not a bulid-in http method in ngResource
+                        {
+                          update:{ method:'PUT' }
+                        }
+                 )
+
+      // need to declare in first use in side controller
+      // unless we cannot access editBear via $scope
+      $scope.edititem = {};
+      $scope.result = {};
+      $scope.items = Item.query()      
+
+      $scope.get = function(id) { 
+        // bear in function argument = result of Bear.get().
+        // bear = Bear.get({bear_id})
+        Item.get({ item_id: id } , function (item) {
+          $scope.result = item
+          console.log( item )
+          console.log('result name = ' + item.name )          
+        })  
+      }
+
+      $scope.edit = function(id) { 
+        Item.get({ item_id: id }, function(item) {
+          $scope.edititem = {};
+          $scope.edititem.id = id ;
+          $scope.edititem.name = item.name;
+          $scope.edititem.price = item.price;
+          $scope.edititem.size = item.size;
+          $scope.edititem.pic = item.pic;
+          angular.forEach($scope.edititem.size, function(value,key)
+          {
+            if(value == 'S')
+              $scope.edititem.sizes=true;
+            if(value=='M')
+              $scope.edititem.sizem=true;
+            if(value=='L')
+              $scope.edititem.sizel=true;
+            console.log(value);
+          });
+          $scope.result = 'Edit item ' + id           
+          $scope.get(id)
+        })  
+      }      
+
+      $scope.update = function(id) {  
+        if( $scope.edititem.name != '' ) { 
+          $scope.edititem.size = [];
+           if($scope.edititem.sizes)
+                 $scope.edititem.size.push('S');
+           if($scope.edititem.sizem)
+                 $scope.edititem.size.push('M');
+           if($scope.edititem.sizel)
+                 $scope.edititem.size.push('L');          
+          Item.update({item_id: id}, {name: $scope.edititem.name,price: $scope.edititem.price, size: $scope.edititem.size,pic: $scope.edititem.pic });
+          $scope.result = 'Item '+ id +' is updated'          
+          $scope.items = Item.query();  
+          $scope.get(id)
+        } 
+        else {
+          $scope.result = 'Please enter updating bear by Select Edit button'
+        }
+      }
+
+      $scope.delete = function(id) {         
+        Item.delete({ item_id: id } )         
+        $scope.result = 'Item '+ id +' is deleted'
+        $scope.items = Item.query(); 
+      }
+
+      $scope.add = function(){ 
+        $scope.size=[];
+        if($scope.additem.sizes)
+         $scope.size.push('S');
+        if($scope.additem.sizem)
+         $scope.size.push('M');
+        if($scope.additem.sizel)
+          $scope.size.push('L');
+        Item.save( {name: $scope.additem.name, price: $scope.additem.price,size: $scope.size,pic: $scope.additem.pic,sex: $scope.additem.sex})        
+        $scope.items = Item.query(); 
+      }; 
+
+      // ==== add method: From slide =====
+      // $scope.add = function(){ 
+      //   var givenBear = new Bear($scope.addBear); 
+      //   givenBear.$save(function(data){ 
+      //     console.log(data.message); 
+      //     $scope.bears = Bear.query(); 
+      //   }); 
+      // }; 
+
+      // ======  $http version (without $resource) =========
+      // $http.get("/api/bears")
+      //  .then(function(response) {
+      //     $scope.bears = response.data;
+      //   })  
+ 
+
+      // $scope.add = function(){ 
+      //   $http.post("/api/bears", $scope.bear). 
+      //     success(function(data){ 
+      //       console.log($scope.bear.name)          
+      //       console.log($scope.bear.weight)
+      //       console.log(data)              
+      //       console.log('message' + data.message)              
+      //       //console.log('name'  + data[0].name)
+      //       $scope.bear = {}
+      //       $scope.result = data.message
+      //       //$scope.bears = data                      
+
+      //       $http.get("/api/bears")
+      //         .then(function(response) {
+      //         $scope.bears = response.data;
+      //       })            
+            
+      //     })
+      // } 
+
+      // ======= function for front-end display with Angular ====
+      $scope.isEmpty = function(obj) {
+          return Object.keys(obj).length == 0;
+      }
+
+      $scope.select = function(id,obj) {
+         return   id == obj.id
+      }
+
+    })
+ 
+  </script>
+</body> 
+</html>

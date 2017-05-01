@@ -1,0 +1,236 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Shoplist A Ecommerce Category Flat Bootstrap Responsive  Website Template | Contact :: w3layouts</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.0.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+ <script src="js/angular-resource.min.js"></script>
+</head>
+<body>
+<!--header strat here-->
+<div ng-app="itemApp" ng-controller="itemCtrl" >
+	<div class="header">
+	<div class="container">
+		<div class="header-main">
+			<div class="top-nav">
+				<div class="content white">
+	              <nav class="navbar navbar-default" role="navigation">
+					    <div class="navbar-header">
+					        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						        <span class="sr-only">Toggle navigation</span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+					        </button>
+					        <div class="navbar-brand logo">
+								<a href="index.html"><img src="images/logo1.png" alt=""></a>
+							</div>
+					    </div>
+					    <!--/.navbar-header-->
+					 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					        <ul class="nav navbar-nav">
+					        	   <li><a href="index.html">Home</a></li>
+						             <li class="dropdown">
+						        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Men<b class="caret"></b></a>
+						            <ul class="dropdown-menu multi-column columns-2">
+							            <div class="row">
+								            <div class="col-sm-4">
+									            <ul class="multi-column-dropdown">
+										            <li><a href="product-m.html">CPS T-shirt</a></li>
+										            <li><a href="product-m.html">T-shirt</a></li>
+										            <li><a href="product-m.html">TieDyeShirt</a></li>
+										            <li><a href="product-m.html">Senyes</a></li>
+									            </ul>
+								            </div>
+							            </div>
+						            </ul>
+						        </li>
+						            <li class="dropdown">
+						        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<b class="caret"></b></a>
+						            <ul class="dropdown-menu multi-column columns-2">
+							            <div class="row">
+								            <div class="col-sm-4">
+									            <ul class="multi-column-dropdown">
+										            <li><a href="product-f.html">CPS T-shirt</a></li>
+										            <li><a href="product-f.html">T-shirt</a></li>
+										            <li><a href="product-f.html">TieDyeShirt</a></li>
+										            <li><a href="product-f.html">Senyes</a></li>
+										            <li><a href="product-f.html">Bohemian</a></li>
+									            </ul>
+								            </div>
+							            </div>
+						            </ul>
+						        </li>
+						        <li><a href="contact.html">Contact</a></li>
+					        </ul>
+					    </div>
+					    <!--/.navbar-collapse-->
+					</nav>
+					<!--/.navbar-->
+				</div>
+			</div>
+			<div class="header-right">
+				<div class="search">
+					<div class="search-text">
+					    <input class="serch" type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"/>
+					</div>
+					<div class="cart box_1">
+						<a href="checkout.html">
+						<h3>
+							<img src="images/cart.png" alt=""/>
+							<div class="total">
+							฿{{costs[0].c}}</div>
+							</h3>
+						</a>
+						<p><a href="" class="simpleCart_empty" ng-click="emptycost(0)">Empty Cart</a></p>
+					</div>               
+                     <div class="clearfix"> </div>					
+				</div>
+			</div>
+		 <div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!--header end here-->
+<!--contact start here-->
+<div class="contact">
+	<div class="container">
+		<div class="contact-main">
+			<div class="contact-top">
+				<h1>Contact Us</h1>
+			</div>
+			<div class="col-md-6 contact-left">
+				<h2>Information</h2>
+				<h4>ร้านN2K</h4>
+				<p>จัดจำหน่ายเสื้อผ้าและสินค้าแฟชั่น</p>
+			    <ul>
+			    	<li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"> </span>Prince of Songkla University,Phuket</li>
+			    	<li><span class="glyphicon glyphicon-phone" aria-hidden="true"> </span>+1284 485 978</li>			    	
+			    	<li><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span><a href="mailto:info@example.com">@example.com</a></li>
+			    </ul>
+			</div>
+			<div class="col-md-6 contact-right">
+				<h3>Feedback</h3>
+			<form>
+				<input type="text" placeholder="Name" required="">
+				<input type="text" placeholder="Email" required="">
+				<textarea placeholder="Message" required=""></textarea>
+				<input type="submit" value="send">
+			</form>
+			</div>
+		  <div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!--contact end here-->
+<!--map start here-->
+<div class="map">
+	<div class="container">
+	 <iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCzzLU6CNoXg86cQ-4Lb-VqwUqUqNdB2EA
+    &q=มอ+ภูเก็ต" allowfullscreen>
+</iframe>
+	</div>
+</div>
+<!--map end here-->
+<!--footer strat here-->
+<div class="footer">
+	<div class="container">
+		<div class="footer-main">
+			<div class="ftr-grids-block">
+				<div class="col-md-3 footer-grid">
+					<ul>
+						<li><a href="product-m.html">CPS T-shirt</a></li>
+						<li><a href="product-m.html">T-shirt</a></li>
+						<li><a href="product-m.html">TieDyeShirt</a></li>
+						<li><a href="product-m.html">Senyes</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 footer-grid">
+					
+				</div>
+				<div class="col-md-3 footer-grid">
+					<ul>
+						<li><a href="contact.html">Contact Us</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 footer-grid-icon">
+					<ul>
+						<li><a href="#"><span class="u-tub"> </span></a></li>
+						<li><a href="#"><span class="instro"> </span></a></li>
+						<li><a href="#"><span class="twitter"> </span></a></li>
+						<li><a href="#"><span class="fb"> </span></a></li>
+						<li><a href="#"><span class="print"> </span></a></li>
+					</ul>
+					<form>
+					<input class="email-ftr" type="text" value="Newsletter" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Newsletter';}">
+					<input type="submit" value="Submit"> 
+					</form>
+				</div>
+		    <div class="clearfix"> </div>
+		  </div>
+		  <div class="copy-rights">
+		     <p>© 2016 Shoplist. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+		   </div>
+		</div>
+	</div>
+</div></div>
+<!--footer end here-->
+<script type="text/javascript"> 
+    var app = angular.module("itemApp", ['ngResource']) 
+
+// app.controller("BearCtrl", function($scope,$http){ 
+    app.controller("itemCtrl", function($scope,$resource){   
+      var Buyingitem = $resource("http://127.0.0.1/api/buyingitems/:buyingitem_id",{buyingitem_id: '@id'},
+                        // PUT is not a bulid-in http method in ngResource
+                        {
+                          update:{ method:'PUT' }
+                        }
+                 )
+       var Cost = $resource("http://127.0.0.1/api/costs/:cost_id",{cost_id: '@id'},
+                        // PUT is not a bulid-in http method in ngResource
+                        {
+                          update:{ method:'PUT' }
+                        }
+                 )
+
+      // need to declare in first use in side controller
+      // unless we cannot access editBear via $scope
+       $scope.buyingitems = Buyingitem.query();
+      $scope.costs = Cost.query();
+      $scope.emptycost = function(c) {  
+          Cost.update({cost_id: 0}, {c: c});     
+          $scope.costs = Cost.query();  
+           angular.forEach( $scope.buyingitems, function(value,key)
+          {
+          	Buyingitem.delete({ buyingitem_id: key } );  
+          });
+            $scope.buyingitems = Buyingitem.query();
+        } 
+        $scope.isEmpty = function(obj) {
+          return Object.keys(obj).length == 0;
+      }
+
+      $scope.select = function(id,obj) {
+         return   id == obj.id
+      }
+
+    })
+ 
+  </script>
+</body>
+</html>

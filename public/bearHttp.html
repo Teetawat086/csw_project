@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restful Bear</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+  </head>
+
+<body > 
+  <div ng-app="itemApp" ng-controller="itemCtrl" class="container">
+    <h2>Cloth Store:</h2>
+    <b> Result: </b> <font color="red">{{result}} </font>
+    <ul>
+        <li ng-repeat="item in items track by $index">         
+              {{ item }}                     
+            <button type="submit" ng-click="get(item.id)" class="btn btn-secondary"> Get </button> 
+        </li>
+    </ul>
+
+    <h2>New item</h2>    
+    <label for="name">Name: </label>    
+    <input type="text" id="name"   ng-model="additem.name"> <br>
+    <label for="price">Price:</label>
+    <input type="number" id="price" ng-model="additem.price"> <br>
+    <button ng-click="add()">Add</button> <br>
+   
+     <br>  <a href="/">Home</a>
+  </div>
+
+  <script type="text/javascript"> 
+    var app = angular.module("itemApp", ['ngResource']) 
+
+    app.controller("itemCtrl", function($scope,$http){         
+      $scope.result = {};      
+
+      // ======  $http version (without $resource) =========
+      $http.get("/api/items")
+       .then(function(response) {
+          $scope.items = response.data; 
+        })  
+ 
+      $scope.get = function(id){ 
+        $http.get("/api/items/" + id)
+         .then(function(response) {            
+            $scope.result =  response.data;
+          })  
+     }
+
+      $scope.add = function(){ 
+        $http.post("/api/items", $scope.additem). 
+          success(function(data){ 
+            console.log($scope.additem.name)          
+            console.log($scope.additem.price)
+            console.log(data)              
+            console.log('message' + data.message)              
+            $scope.item = {}
+            $scope.result = data.message
+            //$scope.bears = data                      
+
+            $http.get("/api/items")
+              .then(function(response) {
+              $scope.items = response.data;
+            })            
+            
+          })
+      } 
+    })
+ 
+  </script>
+</body>
+</html>
