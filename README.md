@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 
 # Installation
@@ -11,7 +10,5 @@ $ node server.js
 
 
 ### Open Web Browser:
-Go to: http://localhost:8000/
+Go to: http://localhost/
 =======
-# csw_project
->>>>>>> f6b91145b760a29d676b928d022a10c90b3ffda1
